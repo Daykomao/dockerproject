@@ -1,5 +1,10 @@
-# Usar la última versión de Ubuntu como sistema base
-FROM ubuntu:latest
+FROM nginx:alpine
 
-# Comando que se ejecutará automáticamente cuando el contenedor inicie
-CMD ["echo", "¡Felicidades, tu primera imagen de Docker funciona correctamente!"]
+WORKDIR /usr/share/nginx/html
+
+COPY index.html .
+COPY styles.css .
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
